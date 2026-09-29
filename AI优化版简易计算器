@@ -1,0 +1,129 @@
+def add(a, b):
+    return a + b
+
+def sub(a, b):
+    return a - b
+
+def mul(a, b):
+    return a * b
+
+def div(a, b):
+    return a / b
+
+
+def show_history(history):
+    """历史记录:list 里每条是一个 dict。"""
+    if not history:
+        print("暂无历史记录")
+        return
+
+    for i, item in enumerate(history, start=1):
+        print(f"{i}. {item['a']} {item['op']} {item['b']} = {item['result']}")
+
+
+def calculator():
+    history = []  # 本次计算器会话的历史记录，跨多轮计算保留
+    ops = {"1": "+", "2": "-", "3": "*", "4": "/"}
+
+    while True:
+        print("\n==== 简易计算器 =====")
+        print("1. 加法")
+        print("2. 减法")
+        print("3. 乘法")
+        print("4. 除法")
+        print("5. 退出")
+        print("6. 查看历史")
+
+        choice = input("请选择1-6:").strip()
+
+        if choice == "5":
+            print("\n本次计算历史:")
+            show_history(history)
+            print("已退出")
+            break
+
+        if choice == "6":
+            show_history(history)
+            continue
+
+        if choice not in {"1", "2", "3", "4"}:
+            print("无效选择,请输入1-6")
+            continue
+
+        try:
+            a = float(input("请输入第一个数字："))
+            b = float(input("请输入第二个数字："))
+        except ValueError:
+            print("输入错误：请输入数字")
+            continue
+
+        try:
+            if choice == "1":
+                result = add(a, b)
+            elif choice == "2":
+                result = sub(a, b)
+            elif choice == "3":
+                result = mul(a, b)
+            else:
+                result = div(a, b)
+        except ZeroDivisionError:
+            print("除法错误:除数不能为0")
+            continue
+
+        print("结果：", result)
+
+        history.append({
+            "a": a,
+            "op": ops[choice],
+            "b": b,
+            "result": result,
+        })
+
+
+def read_max_number():
+    """让用户输入乘法表最大数字，并做范围校验。"""
+    while True:
+        raw = input("请输入乘法表最大数字(1-20):").strip()
+        try:
+            n = int(raw)
+        except ValueError:
+            print("请输入整数")
+            continue
+
+        if 1 <= n <= 20:
+            return n
+        print("超出范围，请输入 1-20")
+
+
+def multiplication_table(max_n):
+    """九九乘法表参数版：max_n 决定最大数字；用固定宽度对齐。"""
+    for i in range(1, max_n + 1):      # 行：1 到 max_n，含 max_n
+        for j in range(1, i + 1):      # 列：1 到 i，含 i
+            text = f"{j}x{i}={i * j}"
+            print(text.ljust(10), end="")  # 左对齐补到10字符，末尾不换行
+        print()                        # 一行结束，换行
+
+
+def main():
+    while True:
+        print("\n===== 主菜单 =====")
+        print("1. 计算器")
+        print("2. 乘法表")
+        print("3. 退出")
+
+        choice = input("请选择1-3:").strip()
+
+        if choice == "1":
+            calculator()
+        elif choice == "2":
+            n = read_max_number()
+            multiplication_table(n)
+        elif choice == "3":
+            print("再见")
+            break
+        else:
+            print("无效选择,请输入1-3")
+
+
+if __name__ == "__main__":
+    main()

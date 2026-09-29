@@ -1,0 +1,15 @@
+# 偶数
+for i in range(1,21):
+    if i %2 == 0:
+        print(i)
+#倒数
+n = 10
+while n >= 1:
+    print(n)
+    n -= 1
+
+# 求和
+total = 0
+for i in range(1,101):
+    total += i 
+print(f"1到100的和是{total}")
