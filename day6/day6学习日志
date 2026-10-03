@@ -1,0 +1,32 @@
+# Day6 学习日志
+日期：2026-09-30
+
+## 今日完成
+- 学会文件读写 open/with open、r/w/a 模式
+- 学会 JSON 读写 json.dump/load
+- 学会异常处理 try/except/else/finally
+- 完成 file_basics.py、exception_basics.py、json_basics.py
+- 完成通讯录管理脚本 contacts.py
+- 用 AI 优化成函数版
+- 完成 Git commit
+
+## 遇到问题
+- 问题：
+- 报错：
+- 解决：
+
+## AI 帮助
+- 我问了 AI：
+- AI 解释：
+
+## 理论笔记
+- 文件读写：
+- JSON 和 dict：
+- 异常处理：
+- 文件读写和异常在 Agent 中：
+
+## 明日计划
+- 学 Git 基础：git add/commit/push、GitHub 注册
+- 整理前 6 天代码到仓库，写 README
+- 复盘卡点与解决
+- 制定下周计划

@@ -1,0 +1,39 @@
+# 1. ValueError
+try:
+    num = int(input("请输入一个整数:"))
+    print(f"你输入了{num}")
+except ValueError:
+    print("输入的不是整数")
+
+# 2.FlieNotError
+try:
+    with open("不存在文件夹.txt","r",encoding="utf-8") as f :
+        content = f.read()
+except FileExistsError:
+    print("文件不存在")
+
+# 3.KeyError
+profile = {"name":"小明"}
+try:
+    print(profile["age"])
+except KeyError:
+    print("键不存在")
+
+# 4.IndexError
+numbers = [1,2,3]
+try:
+    print(numbers[10])
+except IndexError:
+    print("索引越界")
+
+# 5.ZeroDivisionError
+try:
+    print(10/0)
+except ZeroDivisionError:
+    print("除数不能为0")
+
+# 6.finally
+try:
+    print("执行try")
+finally:
+    print("finally总会执行")
